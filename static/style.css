@@ -1,0 +1,107 @@
+/* Estilos Gerais */
+
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #5fa6e9;
+    color: #212529;
+}
+
+h2 {
+    color: #007bff;
+    margin-bottom: 20px;
+}
+
+/* Estilização do Formulário */
+.form-control {
+    border-radius: 0.25rem;
+    border: 1px solid #ced4da;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+/* Botões */
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+/* Lista de Produtos e Categorias */
+.list-group-item {
+    border: 1px solid #ddd;
+    margin-bottom: 5px;
+    background-color: #fff;
+}
+
+.categoria-list li {
+    list-style: none;
+    font-size: 0.9em;
+    color: #000000;
+}
+
+/* Badges de Estoque */
+.badge {
+    background-color: #28a745;
+    color: rgb(0, 0, 0);
+}
+
+.badge-light {
+    background-color: #6d6d6d;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .form-group {
+        width: 100%;
+    }
+}
+
+/* Container Principal */
+.container {
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.color-field, .size-field, .quantity-field {
+    margin-bottom: 7px; /* Ajuste o valor de acordo com a necessidade */
+}
+
+
+.badge-black {
+    background-color: black;
+    color: white;
+}
+
+.badge-white {
+    background-color: #ced4da;
+    color: #000000;
+}
+
+
+.badge-green {
+    background-color: green;
+    color: white;
+}
+
+.badge-brown {
+    background-color: brown;
+    color: white;
+}
+
+.badge-navy {
+    background-color: navy;
+    color: white;
+}
+
+
+/* Adicione mais classes para outras cores conforme necessário */
+
