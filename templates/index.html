@@ -42,7 +42,7 @@
                 '</div>' +
                 '<div class="row mb-2">' +
                     '<div class="quantity-field col-md-6">' +
-                        'Quantidade: <input type="number" name="quantity[]" class="form-control">' +
+                        'Quantidade: <input type="number" name="quantity[]" class="form-control" pattern="[0-9]*" inputmode="numeric">' +
                     '</div>' +
                 '</div>';
             container.innerHTML += html;
@@ -106,7 +106,8 @@
                     </div>  
                     <div class="form-group">
                         <label for="precio">Precio:</label>
-                        <input type="number" class="form-control" name="precio" required>
+                        <input type="number" class="form-control" name="precio" required pattern="[0-9]*" inputmode="numeric">
+
                     </div>
                     <div class="form-group">
                         <label for="categoria">Categoria:</label>
