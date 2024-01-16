@@ -76,6 +76,9 @@ h2 {
 }
 
 
+
+
+/* Estilos de Cores das etiquetas dos produtos */
 .badge-black {
     background-color: black;
     color: white;
@@ -102,6 +105,64 @@ h2 {
     color: white;
 }
 
+.badge-orange {
+    background-color: orange;
+    color: white;
+}
 
-/* Adicione mais classes para outras cores conforme necessário */
+.badge-military {
+    background-color: #556b2f;
+    color: white;
+}
+
+.badge-lightblue {
+    background-color: #add8e6;
+    color: white;
+}
+
+.badge-purple {
+    background-color: purple;
+    color: white;
+}
+
+.badge-yellow {
+    background-color: yellow;
+    color: black;
+}
+
+.badge-wine {
+    background-color: #800000;
+    color: white;
+}
+
+.badge-red {
+    background-color: red;
+    color: white;
+}
+
+.badge-gray {
+    background-color: gray;
+    color: white;
+}
+
+.badge-darkgray {
+    background-color: rgb(72, 72, 72);
+    color: white;
+}
+
+.badge-pink {
+    background-color: pink;
+    color: white;
+}
+.badge-blue {
+    background-color: blue;
+    color: white;
+}
+
+
+
+
+
+
+/* FIM CORES */
 
