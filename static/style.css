@@ -79,6 +79,12 @@ h2 {
 
 
 /* Estilos de Cores das etiquetas dos produtos */
+
+.badge-beige {
+    background-color: rgb(167, 167, 137);
+    color: black;
+}
+
 .badge-black {
     background-color: black;
     color: white;
