@@ -12,41 +12,70 @@
     <script>
         function addColorSizeFields() {
             var container = document.getElementById("colorSizeContainer");
-            var html = 
-                '<div class="row mb-2">' +
-                    '<div class="color-field col-md-6">' +
-                        'Cor: <select name="color[]" class="form-control">' +
-                            '<option value="selecione">Selecione</option>' +
-                            '<option value="white">Branco</option>' +
-                            '<option value="black">Preto</option>' +
-                            '<option value="navy">Azul</option>' +
-                            '<option value="brown">Marrom</option>' +
-                            '<option value="green">Verde</option>' +
-                            '<option value="beige">Bege</option>' +
-                            '<option value="red">Vermelho</option>' +
-                            '<option value="gray">Cinza</option>' +
-                            '<option value="darkgray">Cinza Escuro</option>' +
-                            '<option value="pink">Rosa</option>' +
-                            '<option value="yellow">Amarelo</option>' +
-                            '<option value="orange">Laranja</option>' +
-                            '<option value="purple">Roxo</option>' +
-                            '<option value="blue">Azul</option>' +
-                            '<option value="wine">Vinho</option>' +
-                        '</select>' +
-                    '</div>' +
-                '</div>' +
-                '<div class="row mb-2">' +
-                    '<div class="size-field col-md-6">' +
-                        'Tamanho: <input type="text" name="size[]" class="form-control">' +
-                    '</div>' +
-                '</div>' +
-                '<div class="row mb-2">' +
-                    '<div class="quantity-field col-md-6">' +
-                        'Quantidade: <input type="number" name="quantity[]" class="form-control" pattern="[0-9]*" inputmode="numeric">' +
-                    '</div>' +
-                '</div>';
-            container.innerHTML += html;
+            var colorSizeBlock = document.createElement("div");
+            colorSizeBlock.classList.add("color-size-block");
+        
+            // Criar e adicionar campo de cor
+            var rowCor = document.createElement("div");
+            rowCor.classList.add("row", "mb-2");
+            var colorField = document.createElement("div");
+            colorField.classList.add("color-field", "col-md-6");
+            var labelCor = document.createElement("label");
+            labelCor.textContent = "Cor: ";
+            var selectCor = document.createElement("select");
+            selectCor.name = "color[]";
+            selectCor.classList.add("form-control");
+            var cores = ["selecione", "white", "black", "navy", "brown", "green", "beige", "red", "gray", "darkgray", "pink", "yellow", "orange", "purple", "blue", "wine"];
+            var nomesCores = ["Selecione", "Branco", "Preto", "Azul", "Marrom", "Verde", "Bege", "Vermelho", "Cinza", "Cinza Escuro", "Rosa", "Amarelo", "Laranja", "Roxo", "Azul", "Vinho"];
+            for (var i = 0; i < cores.length; i++) {
+                var option = document.createElement("option");
+                option.value = cores[i];
+                option.textContent = nomesCores[i];
+                selectCor.appendChild(option);
+            }
+            colorField.appendChild(labelCor);
+            colorField.appendChild(selectCor);
+            rowCor.appendChild(colorField);
+            colorSizeBlock.appendChild(rowCor);
+        
+            // Criar e adicionar campo de tamanho
+            var rowTamanho = document.createElement("div");
+            rowTamanho.classList.add("row", "mb-2");
+            var sizeField = document.createElement("div");
+            sizeField.classList.add("size-field", "col-md-6");
+            var labelTamanho = document.createElement("label");
+            labelTamanho.textContent = "Tamanho: ";
+            var inputTamanho = document.createElement("input");
+            inputTamanho.type = "text";
+            inputTamanho.name = "size[]";
+            inputTamanho.classList.add("form-control");
+            sizeField.appendChild(labelTamanho);
+            sizeField.appendChild(inputTamanho);
+            rowTamanho.appendChild(sizeField);
+            colorSizeBlock.appendChild(rowTamanho);
+        
+            // Criar e adicionar campo de quantidade
+            var rowQuantidade = document.createElement("div");
+            rowQuantidade.classList.add("row", "mb-2");
+            var quantityField = document.createElement("div");
+            quantityField.classList.add("quantity-field", "col-md-6");
+            var labelQuantidade = document.createElement("label");
+            labelQuantidade.textContent = "Quantidade: ";
+            var inputQuantidade = document.createElement("input");
+            inputQuantidade.type = "number";
+            inputQuantidade.name = "quantity[]";
+            inputQuantidade.classList.add("form-control");
+            inputQuantidade.setAttribute("pattern", "[0-9]*");
+            inputQuantidade.setAttribute("inputmode", "numeric");
+            quantityField.appendChild(labelQuantidade);
+            quantityField.appendChild(inputQuantidade);
+            rowQuantidade.appendChild(quantityField);
+            colorSizeBlock.appendChild(rowQuantidade);
+        
+            // Adicionar o bloco ao container
+            container.appendChild(colorSizeBlock);
         }
+        
         
         
         
