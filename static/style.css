@@ -57,6 +57,60 @@ h2 {
 }
 
 /* Responsividade */
+
+@media only screen and (max-width: 320px) {
+    .form-group, .form-control, .btn-primary, .btn-secondary {
+        width: 100%;
+    }
+    .btn-primary, .btn-secondary {
+        padding: 10px;
+        font-size: 16px;
+    }
+    .list-group-item {
+        font-size: 14px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .form-group, .form-control, .btn-primary, .btn-secondary {
+        width: 100%;
+    }
+    .btn-primary, .btn-secondary {
+        padding: 12px;
+        font-size: 18px;
+    }
+    .list-group-item {
+        font-size: 16px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .form-group, .form-control, .btn-primary, .btn-secondary {
+        width: 100%;
+    }
+    .btn-primary, .btn-secondary {
+        padding: 12px;
+        font-size: 18px;
+    }
+    .list-group-item {
+        font-size: 16px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .form-group, .form-control, .btn-primary, .btn-secondary {
+        width: 100%;
+    }
+    .btn-primary, .btn-secondary {
+        padding: 15px;
+        font-size: 20px;
+    }
+    .list-group-item {
+        font-size: 18px;
+    }
+}
+
+
 @media (max-width: 768px) {
     .form-group {
         width: 100%;
@@ -164,11 +218,6 @@ h2 {
     background-color: blue;
     color: white;
 }
-
-
-
-
-
 
 /* FIM CORES */
 
