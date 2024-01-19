@@ -210,7 +210,7 @@
                     </div>
                 </div>
                 <div class="col-md-6" id="colorSizeContainer">
-                    <!-- Os campos de cor, tamanho e quantidade serão adicionados aqui -->
+                
                 </div>
             </div>
             <div class="row">
@@ -276,10 +276,11 @@
                                             <div class="col-md-6">
                                                 <label>Cor:</label>
                                                 <select name="color[]" class="form-control">
-                                                    {% for opcao_cor in cores %}
-                                                        <option value="{{ opcao_cor }}" {% if opcao_cor == color %} selected {% endif %}>{{ opcao_cor }}</option>
+                                                    {% for cor in cores %}
+                                                        <option value="{{ cor }}" {% if cor == color %} selected {% endif %}>{{ cor }}</option>
                                                     {% endfor %}
-                                                </select>                                                
+                                                </select>
+                                                                                          
                                             </div>
                                             <div class="col-md-6">
                                                 <label>Tamanho:</label>

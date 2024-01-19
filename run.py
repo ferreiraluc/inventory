@@ -7,9 +7,11 @@ app.secret_key = 'your_secret_key'
 
 tienda = TiendaRopa()
 
+cores = ["white", "black", "navy", "brown", "green", "beige", "red", "gray", "darkgray", "pink", "yellow", "orange", "purple", "blue", "wine"]
+
 @app.route('/')
 def index():
-    return render_template('index.html', productos=tienda.productos)
+    return render_template('index.html', productos=tienda.productos, cores=cores)
 
 @app.route('/agregar_producto', methods=['POST'])
 def agregar_producto():
