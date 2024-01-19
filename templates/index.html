@@ -75,9 +75,72 @@
             // Adicionar o bloco ao container
             container.appendChild(colorSizeBlock);
         }
+
+        function addColorSizeFieldsToModal(producto_id) {
+            var container = document.getElementById("colorSizeContainerModal" + producto_id);
+            var colorSizeBlock = document.createElement("div");
+            colorSizeBlock.classList.add("color-size-block");
         
+            // Criar e adicionar campo de cor
+            var rowCor = document.createElement("div");
+            rowCor.classList.add("row", "mb-2");
+            var colorField = document.createElement("div");
+            colorField.classList.add("color-field", "col-md-6");
+            var labelCor = document.createElement("label");
+            labelCor.textContent = "Cor: ";
+            var selectCor = document.createElement("select");
+            selectCor.name = "color[]";
+            selectCor.classList.add("form-control");
+            var cores = ["selecione", "white", "black", "navy", "brown", "green", "beige", "red", "gray", "darkgray", "pink", "yellow", "orange", "purple", "blue", "wine"];
+            var nomesCores = ["Selecione", "Branco", "Preto", "Azul", "Marrom", "Verde", "Bege", "Vermelho", "Cinza", "Cinza Escuro", "Rosa", "Amarelo", "Laranja", "Roxo", "Azul", "Vinho"];
+            for (var i = 0; i < cores.length; i++) {
+                var option = document.createElement("option");
+                option.value = cores[i];
+                option.textContent = nomesCores[i];
+                selectCor.appendChild(option);
+            }
+            colorField.appendChild(labelCor);
+            colorField.appendChild(selectCor);
+            rowCor.appendChild(colorField);
+            colorSizeBlock.appendChild(rowCor);
         
+            // Criar e adicionar campo de tamanho
+            var rowTamanho = document.createElement("div");
+            rowTamanho.classList.add("row", "mb-2");
+            var sizeField = document.createElement("div");
+            sizeField.classList.add("size-field", "col-md-6");
+            var labelTamanho = document.createElement("label");
+            labelTamanho.textContent = "Tamanho: ";
+            var inputTamanho = document.createElement("input");
+            inputTamanho.type = "text";
+            inputTamanho.name = "size[]";
+            inputTamanho.classList.add("form-control");
+            sizeField.appendChild(labelTamanho);
+            sizeField.appendChild(inputTamanho);
+            rowTamanho.appendChild(sizeField);
+            colorSizeBlock.appendChild(rowTamanho);
         
+            // Criar e adicionar campo de quantidade
+            var rowQuantidade = document.createElement("div");
+            rowQuantidade.classList.add("row", "mb-2");
+            var quantityField = document.createElement("div");
+            quantityField.classList.add("quantity-field", "col-md-6");
+            var labelQuantidade = document.createElement("label");
+            labelQuantidade.textContent = "Quantidade: ";
+            var inputQuantidade = document.createElement("input");
+            inputQuantidade.type = "number";
+            inputQuantidade.name = "quantity[]";
+            inputQuantidade.classList.add("form-control");
+            inputQuantidade.setAttribute("pattern", "[0-9]*");
+            inputQuantidade.setAttribute("inputmode", "numeric");
+            quantityField.appendChild(labelQuantidade);
+            quantityField.appendChild(inputQuantidade);
+            rowQuantidade.appendChild(quantityField);
+            colorSizeBlock.appendChild(rowQuantidade);
+        
+            // Adicionar o bloco ao container
+            container.appendChild(colorSizeBlock);
+        }
         
         
 
@@ -104,6 +167,9 @@
                     {% for producto in productos %}
                     <li class="list-group-item d-flex justify-content-between align-items-center">
                         <div>
+                            <button type="button" class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#editModal{{ producto.producto_id }}">
+                                editar
+                            </button>
                             <span class="badge badge-light">ID {{ producto.producto_id }}</span>
                             {{ producto.nombre }} <!-- Adicionado o ID aqui -->
                             <ul class="categoria-list">
@@ -177,9 +243,79 @@
             <button type="submit" class="btn btn-primary">Realizar Venta</button>
         </form>
     </div>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+
+    {% for producto in productos %}
+    <div class="modal fade" id="editModal{{ producto.producto_id }}" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editModalLabel">Editar Produto ID {{ producto.producto_id }}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Formulário de Edição -->
+                    <form action="/editar_producto/{{ producto.producto_id }}" method="post">
+                        <div class="form-group">
+                            <label for="nombre">Nome:</label>
+                            <input type="text" class="form-control" name="nombre" required value="{{ producto.nombre }}">
+                        </div>  
+                        <div class="form-group">
+                            <label for="precio">Preço:</label>
+                            <input type="number" class="form-control" name="precio" required pattern="[0-9]*" inputmode="numeric" value="{{ producto.precio }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="categoria">Categoria:</label>
+                            <input type="text" class="form-control" name="categoria" required value="{{ producto.categoria }}">
+                        </div>
+                        <div id="colorSizeContainerModal{{ producto.producto_id }}">
+                            <!-- Campos de cor, tamanho e quantidade existentes -->
+                            {% for color, tamanhos in producto.stock.items() %}
+                                {% for tamano, cantidad in tamanhos.items() %}
+                                    <div class="color-size-block">
+                                        <div class="row mb-2">
+                                            <div class="col-md-6">
+                                                <label>Cor:</label>
+                                                <select name="color[]" class="form-control">
+                                                    {% for opcao_cor in cores %}
+                                                        <option value="{{ opcao_cor }}" {% if opcao_cor == color %} selected {% endif %}>{{ opcao_cor }}</option>
+                                                    {% endfor %}
+                                                </select>                                                
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label>Tamanho:</label>
+                                                <input type="text" class="form-control" name="size[]" value="{{ tamano }}">
+                                            </div>
+                                        </div>
+                                        <div class="row mb-2">
+                                            <div class="col-md-6">
+                                                <label>Quantidade:</label>
+                                                <input type="number" class="form-control" name="quantity[]" value="{{ cantidad }}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            {% endfor %}
+                        </div>
+                        <div class="mb-3">
+                            <button type="button" class="btn btn-secondary" onclick="addColorSizeFieldsToModal({{ producto.producto_id }})">Adicionar Cor e Tamanho</button>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+
+
+
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+
+
 
 </body>
 </html>

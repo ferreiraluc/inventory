@@ -1,6 +1,16 @@
 /* Estilos Gerais */
 
 
+.btn-warning.btn-sm {
+    background-color: #ffffff; /* Cor de fundo branca */
+    border-color: #007bff;    /* Cor da borda azul */
+    color: #007bff;           /* Cor do texto azul */
+}
+.btn-warning.btn-sm:hover {
+    background-color: #e6f2ff; /* Cor de fundo mais clara ao passar o mouse */
+    border-color: #0056b3;    /* Cor da borda um pouco mais escura */
+}
+
 body {
     font-family: 'Arial', sans-serif;
     background-color: #5fa6e9;
@@ -218,6 +228,8 @@ h2 {
     background-color: blue;
     color: white;
 }
+
+
 
 /* FIM CORES */
 
